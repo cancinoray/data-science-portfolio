@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data — do NOT commit datasets (see each project README for download instructions)
+*.csv
+*.tsv
+*.parquet
+*.db
+*.sqlite
+*.sqlite3
+*/data/*
+!*/data/.gitkeep
+
+# Streamlit / OS / editor
+.streamlit/secrets.toml
+.DS_Store
+.vscode/
+.idea/
