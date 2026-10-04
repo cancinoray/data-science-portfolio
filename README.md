@@ -7,7 +7,9 @@
 
 Hi, I'm [Raymond Cancino](https://cancinoray.netlify.app/): a Data Engineer transitioning into **Forward Deployed Engineering** and **Data Science, Machine Learning, and AI**. Philippines-based.
 
-I help e-commerce and ops teams make sense of data that doesn't agree with itself. Across e-commerce, AdTech, and EdTech I've built pipelines that survive inconsistent schemas and mismatched platforms, then shipped the fix (the mix of client-facing problem-solving and hands-on engineering that FDE work calls for). That same data-engineering background is what this repo builds on: moving from *delivering clean data* to *extracting the signal in it*, with modeling, forecasting, and experimentation, and an eye toward applied ML/AI next. Mechanical Engineering graduate and former university instructor, comfortable structuring ambiguous problems and explaining results plainly.
+I help e-commerce and ops teams make sense of data that doesn't agree with itself. Across e-commerce, AdTech, and EdTech I've built pipelines that survive inconsistent schemas and mismatched platforms, then shipped the fix (the mix of client-facing problem-solving and hands-on engineering that FDE work calls for).
+
+That same data-engineering background is what this repo builds on: moving from *delivering clean data* to *extracting the signal in it*, with modeling, forecasting, and experimentation, and an eye toward applied ML/AI next. Mechanical Engineering graduate and former university instructor, comfortable structuring ambiguous problems and explaining results plainly.
 
 - Portfolio: https://cancinoray.netlify.app/
 - Resume / CV: https://cancinoray.netlify.app/assets/resume.pdf
