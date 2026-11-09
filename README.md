@@ -1,4 +1,4 @@
-# Data Science Portfolio:
+# Data Science Portfolio
 
 [![Portfolio](https://img.shields.io/badge/portfolio-cancinoray.netlify.app-0a66c2)](https://cancinoray.netlify.app/)
 [![Live dashboard](https://img.shields.io/badge/live-dashboard-1B998B)](https://data-science-portfolio-cancinoray.streamlit.app/)
