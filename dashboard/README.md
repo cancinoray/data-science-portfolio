@@ -1,7 +1,8 @@
 # Portfolio dashboard
 
-A single Streamlit app that summarises all seven projects: headline metrics, one interactive chart
-per project, the key findings, the method, the caveat, and links back to the notebook and README.
+A single Streamlit app that summarises all seven projects: headline metrics, two interactive charts
+per project, a data snapshot, the key findings, the method, the caveat, and links back to the
+notebook and README.
 
 ![Portfolio dashboard](../assets/portfolio_dashboard.png)
 
@@ -30,6 +31,8 @@ change an analysis, update the corresponding metrics in `dashboard/app.py` and t
 
 - `app.py` — page config, design tokens, project data, Altair charts, routing.
 - Pages: Overview, plus 01–07.
+- Per project: 4 KPI cards, a main chart, a supporting chart, 3 data-snapshot cards, findings,
+  method, caveat, and links.
 - Navigation: sidebar, project cards, and previous/next buttons.
 - Links: notebook, project README, repository.
 

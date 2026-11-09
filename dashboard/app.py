@@ -113,6 +113,22 @@ st.markdown(
     }
     .kpi-value { font-size: 1.65rem; font-weight: 700; color: #12355B; line-height: 1.15; }
     .kpi-note { font-size: 0.73rem; color: #667085; margin-top: 0.3rem; line-height: 1.35; }
+    .context {
+        background: #FFFFFF;
+        border: 1px solid #E4E7EC;
+        border-radius: 12px;
+        padding: 0.8rem 1rem;
+        min-height: 96px;
+    }
+    .context-label {
+        font-size: 0.64rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #667085;
+    }
+    .context-value { font-size: 0.94rem; font-weight: 600; color: #12355B; margin-top: 0.2rem; line-height: 1.3; }
+    .context-note { font-size: 0.72rem; color: #667085; margin-top: 0.15rem; }
 
     .card-kicker {
         font-size: 0.7rem;
@@ -217,6 +233,22 @@ def kpi_row(metrics: list[tuple[str, str, str]]) -> None:
         )
 
 
+def context_row(items: list[tuple[str, str, str]]) -> None:
+    columns = st.columns(len(items), gap="medium")
+    for column, (label, value, note) in zip(columns, items):
+        column.markdown(
+            f"""
+            <div class="context">
+              <div class="context-label">{label}</div>
+              <div class="context-value">{value}</div>
+              <div class="context-note">{note}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    st.markdown('<div style="height:0.5rem"></div>', unsafe_allow_html=True)
+
+
 def page_header(project: dict) -> None:
     st.markdown(
         f"""
@@ -302,6 +334,12 @@ PROJECTS = [
         ),
         "caveat": "Asking prices, not transactions; 50% of variation is unexplained; one snapshot.",
         "chart_title": "Model comparison — 5-fold CV R²",
+        "chart2_title": "Median nightly price by borough",
+        "context": [
+            ("Dataset", "Inside Airbnb NYC", "2026 snapshot"),
+            ("Sample", "20,320 listings", "after cleaning"),
+            ("Validation", "5-fold CV + 80/20", "log-price OLS"),
+        ],
         "table_title": "Model comparison",
         "table": pd.DataFrame(
             {
@@ -343,6 +381,12 @@ PROJECTS = [
         ),
         "caveat": "1,460 rows, one market; CV and holdout disagree; log back-transform estimates a median.",
         "chart_title": "Overfitting in one picture — polynomial degree vs RMSE",
+        "chart2_title": "Holdout RMSE by model",
+        "context": [
+            ("Dataset", "Ames Housing", "1,460 sales"),
+            ("Predictors", "79 → 297 encoded", "after engineering"),
+            ("Validation", "80/20 + 5-fold CV", "alpha selected by CV"),
+        ],
         "table_title": "Model comparison",
         "table": pd.DataFrame(
             {
@@ -385,6 +429,12 @@ PROJECTS = [
         ),
         "caveat": "One city, two years, no weather inputs; point forecasts only; modelled/reanalysis data.",
         "chart_title": "Forecast error by horizon",
+        "chart2_title": "Static 90-day RMSE by model",
+        "context": [
+            ("Dataset", "Open-Meteo NYC PM2.5", "hourly"),
+            ("Sample", "17,544 hours", "2023–2024"),
+            ("Validation", "last 90 days", "chronological"),
+        ],
         "table_title": "Cumulative RMSE over the first h days",
         "table": pd.DataFrame(
             {
@@ -426,6 +476,12 @@ PROJECTS = [
         ),
         "caveat": "Administrative data, 1999–2008; weak signal; no calibration or fairness audit yet.",
         "chart_title": "Precision/recall trade-off — balanced logistic",
+        "chart2_title": "Precision, recall, and F1 by model",
+        "context": [
+            ("Dataset", "UCI Diabetes 130", "1999–2008"),
+            ("Sample", "99,343 encounters", "71,518 patients"),
+            ("Validation", "patient-grouped 80/20", "no patient overlap"),
+        ],
         "table_title": "Model comparison",
         "table": pd.DataFrame(
             {
@@ -469,6 +525,12 @@ PROJECTS = [
         ),
         "caveat": "Two days of anonymised data; costs are illustrative; drift and calibration not modelled.",
         "chart_title": "Random Forest — precision/recall by threshold",
+        "chart2_title": "PR-AUC vs ROC-AUC by model",
+        "context": [
+            ("Dataset", "ULB credit-card fraud", "48 hours"),
+            ("Sample", "283,726 transactions", "492 frauds"),
+            ("Validation", "70/15/15 chronological", "threshold on validation"),
+        ],
         "table_title": "Model comparison",
         "table": pd.DataFrame(
             {
@@ -511,6 +573,12 @@ PROJECTS = [
         ),
         "caveat": "Guest customers excluded; gross spend, not net of returns; k and segment names are judgement calls.",
         "chart_title": "Customer share vs revenue share",
+        "chart2_title": "Average monetary value by segment",
+        "context": [
+            ("Dataset", "UCI Online Retail", "Dec 2010–Dec 2011"),
+            ("Sample", "4,338 customers", "392,692 line items"),
+            ("Validation", "k = 5, ARI 0.92", "silhouette 0.316"),
+        ],
         "table_title": "Segment profiles",
         "table": pd.DataFrame(
             {
@@ -554,6 +622,12 @@ PROJECTS = [
         ),
         "caveat": "One game, one experiment; no revenue; SRM; post-treatment engagement is not a covariate.",
         "chart_title": "Retention by arm",
+        "chart2_title": "Lift with 95% confidence interval",
+        "context": [
+            ("Dataset", "Cookie Cats A/B test", "mobile game"),
+            ("Sample", "90,189 players", "44,700 vs 45,489"),
+            ("Validation", "chi-square + power + SRM", "Bonferroni α = 0.025"),
+        ],
         "table_title": "Experiment results",
         "table": pd.DataFrame(
             {
@@ -827,6 +901,213 @@ def chart_07() -> None:
     show_chart(chart)
 
 
+
+def chart2_01() -> None:
+    df = pd.DataFrame(
+        {
+            "borough": ["Bronx", "Staten Island", "Queens", "Brooklyn", "Manhattan"],
+            "median": [106.6, 107.8, 120.2, 151.5, 234.8],
+        }
+    )
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5)
+        .encode(
+            x=alt.X("borough:N", sort=list(df["borough"]), axis=alt.Axis(title=None, labelAngle=0)),
+            y=alt.Y("median:Q", axis=alt.Axis(title="Median nightly price ($)", format="$,.0f")),
+            color=alt.condition(
+                alt.datum.borough == "Manhattan", alt.value(ORANGE), alt.value(NAVY)
+            ),
+            tooltip=[
+                alt.Tooltip("borough:N", title="Borough"),
+                alt.Tooltip("median:Q", title="Median price", format="$,.0f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_02() -> None:
+    df = pd.DataFrame(
+        {
+            "model": ["Baseline", "Full OLS", "Ridge", "Lasso"],
+            "rmse": [35978, 22788, 25704, 25521],
+        }
+    )
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5)
+        .encode(
+            x=alt.X("model:N", sort=list(df["model"]), axis=alt.Axis(title=None, labelAngle=0)),
+            y=alt.Y("rmse:Q", axis=alt.Axis(title="Holdout RMSE ($)", format="$,.0f")),
+            color=alt.condition(
+                alt.datum.model == "Full OLS", alt.value(ORANGE), alt.value(NAVY)
+            ),
+            tooltip=[
+                alt.Tooltip("model:N", title="Model"),
+                alt.Tooltip("rmse:Q", title="Holdout RMSE", format="$,.0f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_03() -> None:
+    df = pd.DataFrame(
+        {
+            "model": ["Random walk", "Seasonal naive", "SARIMA", "Ridge"],
+            "rmse": [7.31, 7.08, 6.79, 6.45],
+        }
+    )
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5)
+        .encode(
+            x=alt.X("model:N", sort=list(df["model"]), axis=alt.Axis(title=None, labelAngle=0)),
+            y=alt.Y("rmse:Q", axis=alt.Axis(title="Static 90-day RMSE (µg/m³)", format=".2f")),
+            color=alt.condition(
+                alt.datum.model == "Ridge", alt.value(ORANGE), alt.value(NAVY)
+            ),
+            tooltip=[
+                alt.Tooltip("model:N", title="Model"),
+                alt.Tooltip("rmse:Q", title="RMSE", format=".2f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_04() -> None:
+    df = pd.DataFrame(
+        {
+            "model": ["Unweighted", "Balanced", "Tree (depth 5)"],
+            "Precision": [0.491, 0.182, 0.176],
+            "Recall": [0.025, 0.543, 0.566],
+            "F1": [0.047, 0.273, 0.268],
+        }
+    ).melt(id_vars="model", var_name="metric", value_name="score")
+
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4)
+        .encode(
+            x=alt.X("model:N", sort=["Unweighted", "Balanced", "Tree (depth 5)"],
+                    axis=alt.Axis(title=None, labelAngle=0)),
+            xOffset=alt.XOffset("metric:N", sort=["Precision", "Recall", "F1"]),
+            y=alt.Y("score:Q", scale=alt.Scale(domain=[0, 1]),
+                    axis=alt.Axis(title="Score", format=".1f")),
+            color=alt.Color(
+                "metric:N",
+                scale=alt.Scale(domain=["Precision", "Recall", "F1"], range=[NAVY, ORANGE, TEAL]),
+                legend=alt.Legend(title=None, orient="bottom", direction="horizontal"),
+            ),
+            tooltip=[
+                alt.Tooltip("model:N", title="Model"),
+                alt.Tooltip("metric:N", title="Metric"),
+                alt.Tooltip("score:Q", title="Score", format=".3f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_05() -> None:
+    df = pd.DataFrame(
+        {
+            "model": ["Logistic", "Random Forest", "Hist. GBM"],
+            "PR-AUC": [0.723, 0.782, 0.725],
+            "ROC-AUC": [0.977, 0.935, 0.926],
+        }
+    ).melt(id_vars="model", var_name="metric", value_name="score")
+
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4)
+        .encode(
+            x=alt.X("model:N", sort=["Logistic", "Random Forest", "Hist. GBM"],
+                    axis=alt.Axis(title=None, labelAngle=0)),
+            xOffset=alt.XOffset("metric:N", sort=["PR-AUC", "ROC-AUC"]),
+            y=alt.Y("score:Q", scale=alt.Scale(domain=[0, 1]),
+                    axis=alt.Axis(title="Score", format=".1f")),
+            color=alt.Color(
+                "metric:N",
+                scale=alt.Scale(domain=["PR-AUC", "ROC-AUC"], range=[NAVY, ORANGE]),
+                legend=alt.Legend(title=None, orient="bottom", direction="horizontal"),
+            ),
+            tooltip=[
+                alt.Tooltip("model:N", title="Model"),
+                alt.Tooltip("metric:N", title="Metric"),
+                alt.Tooltip("score:Q", title="Score", format=".3f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_06() -> None:
+    segments = ["Champions", "Loyal", "At risk", "New / promising", "Hibernating"]
+    df = pd.DataFrame(
+        {
+            "segment": segments,
+            "avg_value": [13877, 2179, 1452, 390, 277],
+        }
+    )
+    chart = (
+        alt.Chart(df)
+        .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5)
+        .encode(
+            x=alt.X("segment:N", sort=segments, axis=alt.Axis(title=None, labelAngle=0)),
+            y=alt.Y("avg_value:Q", axis=alt.Axis(title="Average monetary value (£)", format=",.0f")),
+            color=alt.condition(
+                alt.datum.segment == "Champions", alt.value(ORANGE), alt.value(NAVY)
+            ),
+            tooltip=[
+                alt.Tooltip("segment:N", title="Segment"),
+                alt.Tooltip("avg_value:Q", title="Average monetary", format=",.0f"),
+            ],
+        )
+    )
+    show_chart(chart, height=300)
+
+
+def chart2_07() -> None:
+    df = pd.DataFrame(
+        {
+            "metric": ["7-day lift", "1-day lift"],
+            "diff": [0.82, 0.59],
+            "low": [0.31, -0.06],
+            "high": [1.33, 1.24],
+        }
+    )
+    order = ["1-day lift", "7-day lift"]
+    base = alt.Chart(df)
+    rule = base.mark_rule(color=ORANGE, size=3).encode(
+        y=alt.Y("metric:N", sort=order, axis=alt.Axis(title=None)),
+        x=alt.X(
+            "low:Q",
+            scale=alt.Scale(domain=[-0.3, 1.6]),
+            axis=alt.Axis(title="Difference (percentage points)", format=".2f", tickCount=8),
+        ),
+        x2="high:Q",
+    )
+    point = base.mark_point(filled=True, size=130, color=NAVY).encode(
+        y=alt.Y("metric:N", sort=order),
+        x=alt.X("diff:Q"),
+        tooltip=[
+            alt.Tooltip("metric:N", title="Metric"),
+            alt.Tooltip("diff:Q", title="Difference", format="+.2f"),
+            alt.Tooltip("low:Q", title="95% CI low", format="+.2f"),
+            alt.Tooltip("high:Q", title="95% CI high", format="+.2f"),
+        ],
+    )
+    zero = (
+        alt.Chart(pd.DataFrame({"x": [0]}))
+        .mark_rule(color="#98A2B3", strokeDash=[4, 4])
+        .encode(x=alt.X("x:Q"))
+    )
+    show_chart(rule + point + zero, height=240)
+
+
 CHARTS = {
     "city-listings": chart_01,
     "house-prices": chart_02,
@@ -835,6 +1116,16 @@ CHARTS = {
     "fraud": chart_05,
     "segmentation": chart_06,
     "ab-testing": chart_07,
+}
+
+SECOND_CHARTS = {
+    "city-listings": chart2_01,
+    "house-prices": chart2_02,
+    "air-quality": chart2_03,
+    "readmission": chart2_04,
+    "fraud": chart2_05,
+    "segmentation": chart2_06,
+    "ab-testing": chart2_07,
 }
 
 
@@ -875,7 +1166,7 @@ def render_home() -> None:
     with left:
         st.markdown("### Pick a project")
         st.caption(
-            "Every page has the headline metrics, the main chart, what I found, and the caveat. "
+            "Every page has headline metrics, two charts, what I found, and the caveat. "
             "The sidebar works too."
         )
     with right:
@@ -920,7 +1211,7 @@ def render_home() -> None:
                     <div class="card-kicker">How to read this</div>
                     <div class="card-title">Start anywhere.</div>
                     <div class="card-result">
-                      Every page has headline metrics, one main chart, what I found, the method, and
+                      Every page has headline metrics, two charts, what I found, the method, and
                       the caveat. The notebook has the full analysis and diagnostics.
                     </div>
                     <div class="card-tags">
@@ -965,6 +1256,18 @@ def render_project(project: dict) -> None:
             unsafe_allow_html=True,
         )
         link_row(project)
+
+    st.markdown(
+        f'<div class="chart-title" style="margin-top:1.5rem;">Supporting view · {project["chart2_title"]}</div>',
+        unsafe_allow_html=True,
+    )
+    SECOND_CHARTS[project["slug"]]()
+
+    st.markdown(
+        '<div class="chart-title" style="margin-top:1.3rem;">Data snapshot</div>',
+        unsafe_allow_html=True,
+    )
+    context_row(project["context"])
 
     with st.expander("Method and data"):
         st.markdown(project["method"])
