@@ -1,6 +1,7 @@
 # Data Science Portfolio: Raymond Cancino
 
 [![Portfolio](https://img.shields.io/badge/portfolio-cancinoray.netlify.app-0a66c2)](https://cancinoray.netlify.app/)
+[![Live dashboard](https://img.shields.io/badge/live-dashboard-1B998B)](https://data-science-portfolio-cancinoray.streamlit.app/)
 [![Resume](https://img.shields.io/badge/resume-view-0a66c2)](https://drive.google.com/file/d/10nixZnwbBtAYzB-wXK0ZibS3YzUrPl-D/view)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-cancinoraymond-0a66c2)](https://www.linkedin.com/in/cancinoraymond/)
 [![WQU Applied Data Science Lab](https://img.shields.io/badge/WQU-Applied%20Data%20Science%20Lab-ff6600)](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)
@@ -12,13 +13,14 @@ I help e-commerce and ops teams make sense of data that doesn't agree with itsel
 This repo is the evidence that I can take that same discipline into modelling: **7 end-to-end projects** covering EDA, regression, time series, classification, ensembles, clustering, and experimentation. Each one starts from a real question, establishes a baseline, validates honestly, and ends with a plain-language answer and its limitations.
 
 - Portfolio: https://cancinoray.netlify.app/
+- Live dashboard: https://data-science-portfolio-cancinoray.streamlit.app/
 - Resume / CV: [view on Google Drive](https://drive.google.com/file/d/10nixZnwbBtAYzB-wXK0ZibS3YzUrPl-D/view)
 - Email: cancinoray@gmail.com · LinkedIn: [/in/cancinoraymond](https://www.linkedin.com/in/cancinoraymond/) · GitHub: [@cancinoray](https://github.com/cancinoray)
 - Open to Data Science, ML/AI, FDE, and Data Engineering roles
 
 **Start here:** [05 fraud detection](./05-ensembles-fraud-detection/) for metric judgement under imbalance, [07 A/B testing](./07-experimentation-ab-testing/) for experiment discipline, and [06 customer segmentation](./06-clustering-customer-segmentation/) for turning clusters into decisions. Every notebook opens with a TL;DR if you want the short version.
 
-**Prefer a visual tour?** Run `streamlit run dashboard/app.py` for the same seven projects as an interactive dashboard.
+**Prefer a visual tour?** Open the [live dashboard](https://data-science-portfolio-cancinoray.streamlit.app/) or run `streamlit run dashboard/app.py` locally.
 
 ## Selected results
 
@@ -84,7 +86,9 @@ Or open the unified portfolio dashboard:
 streamlit run dashboard/app.py
 ```
 
-For Streamlit Community Cloud, use **`dashboard/app.py`** as the main file path. The app needs no
+The live app is at
+[data-science-portfolio-cancinoray.streamlit.app](https://data-science-portfolio-cancinoray.streamlit.app/).
+To deploy your own copy, use **`dashboard/app.py`** as the main file path. The app needs no
 secrets or data files; it reads the summary results committed with the notebooks.
 
 Datasets are **not committed**; download them into that project's `data/` folder (git-ignored)

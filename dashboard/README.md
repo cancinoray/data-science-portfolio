@@ -4,6 +4,8 @@ A single Streamlit app that summarises all seven projects: headline metrics, two
 per project, a data snapshot, the key findings, the method, the caveat, and links back to the
 notebook and README.
 
+**Live app:** [data-science-portfolio-cancinoray.streamlit.app](https://data-science-portfolio-cancinoray.streamlit.app/)
+
 ![Portfolio dashboard](../assets/portfolio_dashboard.png)
 
 ## Run
