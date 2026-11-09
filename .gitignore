@@ -9,6 +9,9 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
+# Build / cache (notebook builders, OpenML cache, extracted figures)
+.cache/
+
 # Data — do NOT commit datasets (see each project README for download instructions)
 *.csv
 *.tsv
