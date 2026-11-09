@@ -38,3 +38,21 @@ change an analysis, update the corresponding metrics in `dashboard/app.py` and t
 1. Add an entry to `PROJECTS` with metrics, findings, method, caveat, and links.
 2. Add a `chart_*` function and register it in `CHARTS`.
 3. `NAV_OPTIONS` and routing update automatically from `PROJECTS`.
+
+## Deploy to Streamlit Community Cloud
+
+1. Push this repository to GitHub with the dashboard committed.
+2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub.
+3. Choose **New app**, then select:
+   - Repository: `cancinoray/data-science-portfolio`
+   - Branch: `main`
+   - Main file path: `dashboard/app.py`
+4. Click **Deploy**. No secrets, API keys, or data files are required.
+5. Optionally set a custom subdomain in the app settings.
+
+Streamlit installs the root `requirements.txt` automatically. It includes the notebook
+dependencies as well, so the first build can take a couple of minutes. The app itself only imports
+Streamlit, Altair, and pandas.
+
+The theme config lives at the repo root (`.streamlit/config.toml`); Streamlit Cloud runs from the
+repo root, so it is picked up automatically.

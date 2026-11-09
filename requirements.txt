@@ -4,7 +4,7 @@ matplotlib
 scipy
 scikit-learn
 statsmodels
-streamlit
-altair
+streamlit>=1.57
+altair>=5
 openpyxl
 jupyter

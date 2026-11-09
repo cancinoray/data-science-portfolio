@@ -84,6 +84,9 @@ Or open the unified portfolio dashboard:
 streamlit run dashboard/app.py
 ```
 
+For Streamlit Community Cloud, use **`dashboard/app.py`** as the main file path. The app needs no
+secrets or data files; it reads the summary results committed with the notebooks.
+
 Datasets are **not committed**; download them into that project's `data/` folder (git-ignored)
 following its README.
 
