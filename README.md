@@ -8,7 +8,7 @@
 
 **Seven end-to-end data science projects** built across EDA, regression, time series, classification, ensembles, clustering, and experimentation. Each project starts from a real question, establishes a baseline, validates honestly, and ends with a plain-language answer and its limitations.
 
-The work is grounded in a data-engineering background: building pipelines, reconciling schemas, and shipping fixes across e-commerce, AdTech, and EdTech. This repository focuses on the layer above that — modelling, evaluation, and communication.
+The work is grounded in a data-engineering background: building pipelines, reconciling schemas, and shipping fixes across e-commerce, AdTech, and EdTech. This repository applies the workflow I learned in WorldQuant University's **Applied Data Science Lab** to independent public datasets — framing the question, cleaning and exploring the data, establishing a baseline, evaluating honestly, and communicating the result.
 
 - Live dashboard: https://data-science-portfolio-cancinoray.streamlit.app/
 - Portfolio: https://cancinoray.netlify.app/
@@ -49,7 +49,7 @@ metrics render on GitHub without running anything.
 
 ## About the work
 
-These projects are original work built after completing WorldQuant University's **Applied Data Science Lab** in 2026 ([verify on Credly](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)). WQU's academic policy doesn't allow sharing or reusing coursework, so this repo is a from-scratch demonstration of the same workflow: my own questions, code, and writing on public datasets. No coursework assignments, text, code, or proprietary datasets are reused here.
+I completed WorldQuant University's **Applied Data Science Lab** in 2026 ([verify on Credly](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)). These projects apply that workflow to independent datasets. Because WQU's policy doesn't allow sharing or reusing coursework, every project here is from scratch: my own questions, code, and writing on public data. No coursework assignments, text, code, or proprietary datasets are reused.
 
 ## What is inside each notebook
 
