@@ -6,17 +6,14 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-cancinoraymond-0a66c2)](https://www.linkedin.com/in/cancinoraymond/)
 [![WQU Applied Data Science Lab](https://img.shields.io/badge/WQU-Applied%20Data%20Science%20Lab-ff6600)](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)
 
-Hi, I'm [Raymond Cancino](https://cancinoray.netlify.app/): a Data Engineer transitioning into **Forward Deployed Engineering** and **Data Science, Machine Learning, and AI**. Philippines-based.
+**Seven end-to-end data science projects** built across EDA, regression, time series, classification, ensembles, clustering, and experimentation. Each project starts from a real question, establishes a baseline, validates honestly, and ends with a plain-language answer and its limitations.
 
-I help e-commerce and ops teams make sense of data that doesn't agree with itself. Across e-commerce, AdTech, and EdTech I've built pipelines that survive inconsistent schemas and mismatched platforms, then shipped the fix — the mix of client-facing problem-solving and hands-on engineering that FDE work calls for.
+The work is grounded in a data-engineering background: building pipelines, reconciling schemas, and shipping fixes across e-commerce, AdTech, and EdTech. This repository focuses on the layer above that — modelling, evaluation, and communication.
 
-This repo is the evidence that I can take that same discipline into modelling: **7 end-to-end projects** covering EDA, regression, time series, classification, ensembles, clustering, and experimentation. Each one starts from a real question, establishes a baseline, validates honestly, and ends with a plain-language answer and its limitations.
-
-- Portfolio: https://cancinoray.netlify.app/
 - Live dashboard: https://data-science-portfolio-cancinoray.streamlit.app/
+- Portfolio: https://cancinoray.netlify.app/
 - Resume / CV: [view on Google Drive](https://drive.google.com/file/d/10nixZnwbBtAYzB-wXK0ZibS3YzUrPl-D/view)
 - Email: cancinoray@gmail.com · LinkedIn: [/in/cancinoraymond](https://www.linkedin.com/in/cancinoraymond/) · GitHub: [@cancinoray](https://github.com/cancinoray)
-- Open to Data Science, ML/AI, FDE, and Data Engineering roles
 
 **Start here:** [05 fraud detection](./05-ensembles-fraud-detection/) for metric judgement under imbalance, [07 A/B testing](./07-experimentation-ab-testing/) for experiment discipline, and [06 customer segmentation](./06-clustering-customer-segmentation/) for turning clusters into decisions. Every notebook opens with a TL;DR if you want the short version.
 
@@ -50,11 +47,9 @@ metrics render on GitHub without running anything.
 - **Communication over jargon.** Each notebook explains what the metric does and does not imply,
   names the limitations, and translates the result into a decision a non-specialist can act on.
 
-## Background
+## About the work
 
-I completed WorldQuant University's **Applied Data Science Lab** in 2026 ([verify on Credly](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)). The programme's academic policy doesn't allow sharing or reusing coursework, so this repo is my from-scratch demonstration of the same workflow: my own questions, code, and writing on public datasets. No coursework assignments, text, code, or proprietary datasets are reused here.
-
-I'm a Mechanical Engineering graduate and former university instructor, comfortable structuring ambiguous problems and explaining results plainly. Next up: deep learning fundamentals and applied LLM/AI projects, building on the modelling and experimentation habits practised here.
+These projects are original work built after completing WorldQuant University's **Applied Data Science Lab** in 2026 ([verify on Credly](https://www.credly.com/badges/c7bfe8cd-3e7e-4c8d-a2c5-c533de00db49)). WQU's academic policy doesn't allow sharing or reusing coursework, so this repo is a from-scratch demonstration of the same workflow: my own questions, code, and writing on public datasets. No coursework assignments, text, code, or proprietary datasets are reused here.
 
 ## What is inside each notebook
 

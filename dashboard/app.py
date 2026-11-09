@@ -1144,9 +1144,9 @@ def render_home() -> None:
             seriously, and ends with the limitation that matters.
           </p>
           <p>
-            I'm Raymond Cancino, a data engineer moving into forward-deployed and applied ML roles.
-            These are the projects where I practised the full loop: define the question, validate
-            honestly, and explain what the result does and does not support.
+            The through-line is evaluation discipline: baseline-first comparisons, validation that
+            respects the data, metrics reported in units that matter, and caveats specific to each
+            dataset. The dashboard is a visual index; each notebook holds the full analysis.
           </p>
           <div class="tag-row">
             <span class="tag">EDA</span>
