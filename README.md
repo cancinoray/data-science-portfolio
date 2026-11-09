@@ -18,6 +18,8 @@ This repo is the evidence that I can take that same discipline into modelling: *
 
 **Start here:** [05 fraud detection](./05-ensembles-fraud-detection/) for metric judgement under imbalance, [07 A/B testing](./07-experimentation-ab-testing/) for experiment discipline, and [06 customer segmentation](./06-clustering-customer-segmentation/) for turning clusters into decisions. Every notebook opens with a TL;DR if you want the short version.
 
+**Prefer a visual tour?** Run `streamlit run dashboard/app.py` for the same seven projects as an interactive dashboard.
+
 ## Selected results
 
 | # | Project | What I found | Skills |
@@ -76,10 +78,16 @@ jupyter notebook
 # open any 0X-*/notebook.ipynb
 ```
 
+Or open the unified portfolio dashboard:
+
+```bash
+streamlit run dashboard/app.py
+```
+
 Datasets are **not committed**; download them into that project's `data/` folder (git-ignored)
 following its README.
 
-The A/B testing project also ships a dashboard:
+The A/B testing project also ships a dedicated dashboard:
 
 ```bash
 cd 07-experimentation-ab-testing
@@ -87,16 +95,17 @@ jupyter notebook notebook.ipynb   # builds data/cookie_cats.db
 streamlit run app.py
 ```
 
-![Cookie Cats A/B testing dashboard](assets/dashboard.png)
+![Portfolio dashboard](assets/portfolio_dashboard.png)
 
-*The Cookie Cats A/B dashboard, running locally.*
+*The portfolio dashboard: seven projects, one interface.*
 
 ## Structure
 
 - `templates/`: blank notebook + project README templates
 - `01-...` through `07-...`: notebook projects (each: `README.md`, `notebook.ipynb`, `data/.gitkeep`)
+- [`dashboard/`](./dashboard/): unified Streamlit portfolio dashboard (overview + one page per project)
 - [`07-experimentation-ab-testing/app.py`](./07-experimentation-ab-testing/app.py): Streamlit dashboard for the A/B test
-- `assets/dashboard.png`: screenshot used above
+- `assets/portfolio_dashboard.png`: screenshot used above
 - [volatility-garch-pipeline](https://github.com/cancinoray/volatility-garch-pipeline): separate repo, in progress (GARCH volatility, tests, packaging)
 
 ## Data and reproducibility notes
