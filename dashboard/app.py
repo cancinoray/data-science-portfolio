@@ -1309,8 +1309,7 @@ with st.sidebar:
     st.divider()
     st.caption("7 projects · 7 public datasets · executed notebooks")
     st.markdown(
-        f"[GitHub]({GITHUB}) · [Portfolio](https://cancinoray.netlify.app/) · "
-        f"[Resume](https://drive.google.com/file/d/10nixZnwbBtAYzB-wXK0ZibS3YzUrPl-D/view)"
+        f"[GitHub]({GITHUB}) · [Portfolio](https://cancinoray.netlify.app/)"
     )
 
 if selected == "Overview":
